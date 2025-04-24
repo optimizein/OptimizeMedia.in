@@ -1,35 +1,132 @@
+// Optimize Media Website inspired by baunfire.com
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Optimize Media</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-</head>
-<body>
-    <header>
-        <h1>Optimize Media</h1>
-        <p>हम एक Creative Design एजेंसी हैं जो आपके Business को Digital दुनिया में पहचान दिलाने के लिए Graphics, Videos और Social Media Strategies में मदद करती है।</p>
-        <div class="icons">
-            <a href="mailto:contact@optimizemedia.in"><i class="fas fa-envelope"></i></a>
-            <a href="https://instagram.com/optimizemedia"><i class="fab fa-instagram"></i></a>
+import React from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { motion } from "framer-motion";
+
+export default function OptimizeMedia() {
+  return (
+    <div className="bg-white text-gray-900 min-h-screen font-sans">
+      {/* Hero Section */}
+      <section className="h-screen flex flex-col justify-center items-center text-center px-4 bg-gradient-to-br from-blue-100 to-white">
+        <motion.img
+          src="/logo.png"
+          alt="Optimize Media Logo"
+          className="w-40 mb-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        />
+        <motion.h1 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className="text-5xl md:text-7xl font-bold mb-4 text-blue-700">
+          Optimize Media
+        </motion.h1>
+        <p className="text-lg md:text-xl max-w-2xl mb-6 text-blue-600">
+          Your Story, Our Design!
+        </p>
+        <Button className="text-lg px-6 py-3 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white">Get in Touch</Button>
+      </section>
+
+      {/* Services Section */}
+      <section className="px-6 py-20 bg-white">
+        <h2 className="text-4xl font-semibold text-center text-blue-700 mb-12">Our Services</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {[
+            { title: "Graphic Design", desc: "Posters, Branding, Product Design." },
+            { title: "Video Editing", desc: "Product Videos, Reels, Promo Clips." },
+            { title: "IG/FB Management", desc: "Content Planning, Daily Posting & Insights." },
+          ].map((service, idx) => (
+            <Card key={idx} className="bg-blue-50 rounded-2xl shadow-md">
+              <CardContent className="p-6">
+                <h3 className="text-2xl font-bold mb-2 text-blue-700">{service.title}</h3>
+                <p className="text-blue-900">{service.desc}</p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
-    </header>
-    <section class="our-work">
-        <h2>Our Work</h2>
-        <div class="gallery">
-            <div class="work-item">Poster Design</div>
-            <div class="work-item">Reels Editing</div>
-            <div class="work-item">Instagram Management</div>
-            <div class="work-item">Brand Promotions</div>
+      </section>
+
+      {/* Highlight Online Work */}
+      <section className="bg-yellow-100 px-6 py-6 text-center">
+        <h2 className="text-2xl font-semibold text-yellow-800">📡 We are currently working online</h2>
+        <p className="text-yellow-700 mt-2">🏢 Offline Studio - Coming Soon!</p>
+      </section>
+
+      {/* Showcase Section */}
+      <section className="px-6 py-20 bg-blue-50">
+        <h2 className="text-4xl font-semibold text-center text-blue-700 mb-12">Our Recent Work</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {[ 
+            { img: "/work/poster1.jpg", title: "Social Media Poster" },
+            { img: "/work/motion1.gif", title: "Motion Poster" },
+            { img: "/work/product_video.jpg", title: "Product Promo Video" },
+          ].map((work, idx) => (
+            <div key={idx} className="bg-white rounded-2xl shadow-lg overflow-hidden">
+              <img src={work.img} alt={work.title} className="w-full h-60 object-cover" />
+              <div className="p-4">
+                <h3 className="text-xl font-semibold text-blue-800">{work.title}</h3>
+              </div>
+            </div>
+          ))}
         </div>
-    </section>
-    <footer>
-        <p>&copy; 2025 Optimize Media. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="px-6 py-20 bg-white">
+        <h2 className="text-4xl font-semibold text-center text-blue-700 mb-12">Pricing</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <Card className="bg-blue-50 rounded-2xl border border-blue-100">
+            <CardContent className="p-6">
+              <h3 className="text-2xl font-bold mb-2 text-blue-700">Single Poster</h3>
+              <p className="text-blue-900 mb-4">₹150 per poster</p>
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white">Order Now</Button>
+            </CardContent>
+          </Card>
+          <Card className="bg-blue-50 rounded-2xl border border-blue-100">
+            <CardContent className="p-6">
+              <h3 className="text-2xl font-bold mb-2 text-blue-700">Monthly Package</h3>
+              <p className="text-blue-900 mb-4">28 Posters for ₹2,299<br />60% Advance Required</p>
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white">Book Package</Button>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="px-6 py-20 bg-white">
+        <h2 className="text-4xl font-semibold text-center text-blue-700 mb-12">Our Team</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto text-center">
+          {[ 
+            { name: "Sachin Shakya", role: "Founder & Creative Head", img: "/team/sachin.jpg" },
+            { name: "Bindiya Gupta", role: "Graphic Designer", img: "/team/bindiya.jpg" },
+            { name: "Shashank Pandey", role: "Video Editor", img: "/team/shashank.jpg" },
+          ].map((member, idx) => (
+            <div key={idx} className="flex flex-col items-center">
+              <img src={member.img} alt={member.name} className="w-40 h-40 rounded-full mb-4 object-cover border-4 border-blue-200" />
+              <h3 className="text-2xl font-bold text-blue-800">{member.name}</h3>
+              <p className="text-blue-600">{member.role}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="px-6 py-20 text-center bg-gradient-to-b from-white to-blue-50">
+        <h2 className="text-4xl font-semibold mb-6 text-blue-700">Let’s Work Together</h2>
+        <p className="text-lg max-w-2xl mx-auto mb-6 text-blue-900">
+          Reach out for collaborations or just say hi! We’re always ready to help your brand grow.
+        </p>
+        <a href="https://wa.me/919567991781" target="_blank" rel="noopener noreferrer">
+          <Button className="bg-blue-600 hover:bg-blue-700 text-white" size="lg">Contact Us</Button>
+        </a>
+      </section>
+
+      {/* Footer */}
+      <footer className="px-6 py-10 bg-blue-950 text-blue-100 text-center space-y-2">
+        <p>© {new Date().getFullYear()} Optimize Media. All rights reserved.</p>
+        <p>📷 Instagram: <a href="https://instagram.com/optimizemedia.in" className="underline">optimizemedia.in</a></p>
+        <p>✉️ Email: <a href="mailto:optimizemediaom@gmail.com" className="underline">optimizemediaom@gmail.com</a></p>
+      </footer>
+    </div>
+  );
+}
